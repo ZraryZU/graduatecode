@@ -1,0 +1,98 @@
+import random
+from datetime import time
+import matplotlib
+import numpy as np
+from tomlkit import string
+
+
+def judge(X,pos):
+    if X[pos]>=M1:
+        return 1
+    elif (X[pos]>=M2) & (X[pos]<M1):
+        return 2
+    elif (X[pos]>=M3) & (X[pos]<M2):
+        return 3
+    elif (X[pos]>=M4) & (X[pos]<M3):
+        return 4
+    elif (X[pos]>M5) & (X[pos]<M4):
+        return 5
+    elif X[pos]<=M5:
+        return 6
+
+n=1000
+m=0
+mm=0
+for k in range(n):
+    X1=[]
+    item_cnt=1000
+    for i in range(item_cnt):
+        random_number = random.random()
+        X1.append(random_number)
+    #print(X1)
+    Xsrt=X1[0:]
+    X2=X1[0:368]
+    Xsrt.sort()
+    #print(X1)
+    #print(Xsrt)
+    X2.sort()
+    max1=X2[367]
+    min1=X2[0]
+    M1=max1
+    M5=min1
+    M4=X2[92]
+    M3=X2[184]
+    M2=X2[276]
+    Qm=[]
+    Qm.append(M1)
+    Qm.append(M2)
+    Qm.append(M3)
+    Qm.append(M4)
+    Qm.append(M5)
+    #print(Qm)
+
+
+    P=np.zeros((6, 6), dtype=float)
+    for i in range(337):
+        for k in range(30):
+            pass
+            #P[judge(X1,i)-1][judge(X1,i+k)-1]+=1
+    ss=0
+    '''
+    for i in range(6):
+        for j in range(6):
+            P[i][j]/=368
+            ss+=P[i][j]    
+    
+    '''
+
+    #print(P)
+    LOWBOUND=367
+    MAXBOUND=1000
+    MAXPOS=999
+    PERCENT_1=990
+    mxpos=0
+    cnt=0
+    for i in range(LOWBOUND,MAXBOUND):
+        if judge(X1,i)!=1:
+            mxpos=i
+            continue
+        if judge(X1,i)==1:
+            mxpos=i
+            break
+    max1 = X1[mxpos]
+    posmx=0
+
+    for i in range(MAXBOUND):
+        if Xsrt[i]==max1:
+            posmx=i
+            break
+    if posmx>=MAXPOS:
+        m+=1
+    if posmx>=PERCENT_1:
+        mm+=1
+print("最大值命中率:")
+print(float(m/n))
+print("前1%命中率:")
+print(float(mm/n))
+
+
