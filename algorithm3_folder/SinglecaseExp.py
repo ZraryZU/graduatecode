@@ -94,7 +94,6 @@ for c in range(1,7000,10):
 plt.scatter(X,Rate1,color="blue")
 plt.scatter(X,Rate1pct,color="green")
 plt.scatter(X,Rate10pct,color="red")
-
 plt.show()
 
 X_np=np.array(X)

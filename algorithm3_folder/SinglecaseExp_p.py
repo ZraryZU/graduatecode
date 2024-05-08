@@ -91,16 +91,23 @@ for p in range(1,999,3):
     Select_Value_aver.append(S_V_A)
 
 
-plt.plot(X,Rate1,color="blue")
-plt.plot(X,Rate1pct,color="green")
-plt.plot(X,Rate10pct,color="red")
-plt.show()
+plt.scatter(X,Rate1,color="blue")
+plt.scatter(X,Rate1pct,color="green")
+plt.scatter(X,Rate10pct,color="red")
+
 
 X_np=np.array(X)
 Y_np=np.array(Select_Value_aver)
 x_new = np.linspace(X_np.min(), X_np.max(),100)
 y_smooth = make_interp_spline(X_np, Y_np)(x_new)
- 
+ # 计算趋势线参数
+m, b = np.polyfit(X_np, Rate1, 1)
+# 绘制趋势线
+plt.plot(X_np, m*X_np + b, '-')
+plt.show()
+
+
+
 plt.plot(X, Selet_Value_high,color="blue")
 plt.plot(X, Select_Value_low,color="green")
 #plt.scatter(X, Select_Value_aver,color="red")
