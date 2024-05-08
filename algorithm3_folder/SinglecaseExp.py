@@ -1,3 +1,4 @@
+import csv
 import random
 from datetime import time
 import matplotlib
@@ -9,7 +10,7 @@ import copy
 from scipy.interpolate import make_interp_spline
  
 c=0.001
-p=0.1
+p=0.5
 miu=1
 REPEAT_COUNT=50
 TARGET_COUNT=0
@@ -23,7 +24,7 @@ Select_Value_low=[]
 Select_Value_aver=[]
 X=[]
 
-for c in range(1,7000,10):
+for c in range(1,7000,100):
     c = c / 10000
     X.append(c)
     #p=p/10000
@@ -89,6 +90,26 @@ for c in range(1,7000,10):
     Selet_Value_high.append(S_V_H)
     Select_Value_low.append(S_V_L)
     Select_Value_aver.append(S_V_A)
+
+
+#数据保存
+Data=[]
+header=['OBSERVE_COST','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
+Data.append(X)
+Data.append(Rate1)
+Data.append(Rate1pct)
+Data.append(Rate10pct)
+Data.append(Selet_Value_high)
+Data.append(Select_Value_low)
+Data.append(Select_Value_aver)
+Data=np.array(Data)
+Data=Data.T
+with open('P='+str(p)+'algorithm3_exp_data.csv', mode='w', encoding='utf-8',newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(header)
+    for row in Data:
+        writer.writerow(row)
+file.close()
 
 
 plt.scatter(X,Rate1,color="blue")

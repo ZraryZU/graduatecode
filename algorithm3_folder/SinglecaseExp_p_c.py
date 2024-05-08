@@ -1,3 +1,4 @@
+import csv
 import random
 from datetime import time
 import matplotlib
@@ -18,10 +19,10 @@ PERCENT1_COUNT=0
 PERCENT10_COUNT=0
 P_LOW=1
 P_HIGH=10000
-P_STEP=20
+P_STEP=200
 C_LOW=1
 C_HIGH=10000
-C_STEP=20
+C_STEP=200
 Rate1=[]
 Rate1pct=[]
 Rate10pct=[]
@@ -103,6 +104,28 @@ for p in range(P_LOW,P_HIGH,P_STEP):
         Select_Value_aver.append(S_V_A)
         slt_v_aver_c.append(S_V_A)
     Slt_v_aver_p_c.append(slt_v_aver_c)
+
+
+#数据保存
+Data=[]
+header=['OBSERVE_COST','BERNOULLI','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
+Data.append(X)
+Data.append(P)
+Data.append(Rate1)
+Data.append(Rate1pct)
+Data.append(Rate10pct)
+Data.append(Selet_Value_high)
+Data.append(Select_Value_low)
+Data.append(Select_Value_aver)
+Data=np.array(Data)
+Data=Data.T
+with open('algorithm3_exp_data.csv', mode='w', encoding='utf-8',newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(header)
+    for row in Data:
+        writer.writerow(row)
+file.close()
+
 
 '''
 plt.scatter(X,Rate1,color="blue")

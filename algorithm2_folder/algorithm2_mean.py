@@ -1,3 +1,4 @@
+import csv
 import random
 from datetime import time
 import matplotlib
@@ -15,7 +16,7 @@ Rate10pct=[]
 Selet_Value_high=[]
 Select_Value_low=[]
 Select_Value_aver=[]
-for c in range(1,7000,5):
+for c in range(1,7000,1000):
     c=c/10000
     PERCENT1_COUNT=0
     PERCENT10_COUNT=0
@@ -27,7 +28,7 @@ for c in range(1,7000,5):
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 900)+100
+        itemss = int(random.random() * 90)+10
         for i in range(itemss):
             random_number = random.random()
             X1.append(random_number)
@@ -67,16 +68,31 @@ for c in range(1,7000,5):
     Select_Value_low.append(S_V_L)
     Select_Value_aver.append(S_V_A)
 
-
+#数据保存
+Data=[]
+header=['OBSERVE_COST','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
+Data.append(X)
+Data.append(Rate1)
+Data.append(Rate1pct)
+Data.append(Rate10pct)
+Data.append(Selet_Value_high)
+Data.append(Select_Value_low)
+Data.append(Select_Value_aver)
+Data=np.array(Data)
+Data=Data.T
+with open('algorithm2_mean_data.csv', mode='w', encoding='utf-8',newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(header)
+    for row in Data:
+        writer.writerow(row)
+file.close()
 
 plt.scatter(X,Rate1,color="blue")
 plt.scatter(X,Rate1pct,color="green")
 plt.scatter(X,Rate10pct,color="red")
-
 plt.show()
 
 plt.scatter(X, Selet_Value_high,color="blue")
 plt.scatter(X, Select_Value_low,color="green")
 plt.scatter(X, Select_Value_aver,color="red")
-
 plt.show()

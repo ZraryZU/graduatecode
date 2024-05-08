@@ -1,3 +1,4 @@
+import csv
 import random
 from datetime import time
 import matplotlib
@@ -89,6 +90,26 @@ for p in range(1,999,3):
     Selet_Value_high.append(S_V_H)
     Select_Value_low.append(S_V_L)
     Select_Value_aver.append(S_V_A)
+
+
+#数据保存
+Data=[]
+header=['BERNOULLI','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
+Data.append(X)
+Data.append(Rate1)
+Data.append(Rate1pct)
+Data.append(Rate10pct)
+Data.append(Selet_Value_high)
+Data.append(Select_Value_low)
+Data.append(Select_Value_aver)
+Data=np.array(Data)
+Data=Data.T
+with open('Cost='+str(c)+'algorithm3_exp_data.csv', mode='w', encoding='utf-8',newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(header)
+    for row in Data:
+        writer.writerow(row)
+file.close()
 
 
 plt.scatter(X,Rate1,color="blue")
