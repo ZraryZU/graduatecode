@@ -8,7 +8,7 @@ import math
 import copy
 from scipy.interpolate import make_interp_spline
  
-c=0.001
+c=0.004
 p=0.1
 miu=1
 REPEAT_COUNT=50
@@ -23,9 +23,9 @@ Select_Value_low=[]
 Select_Value_aver=[]
 X=[]
 
-for c in range(1,7000,10):
-    c = c / 10000
-    X.append(c)
+for p in range(1,999,3):
+    p = p / 1000
+    X.append(p)
     #p=p/10000
     RESULT_DIC = []
     PERCENT1_COUNT = 0
@@ -91,10 +91,9 @@ for c in range(1,7000,10):
     Select_Value_aver.append(S_V_A)
 
 
-plt.scatter(X,Rate1,color="blue")
-plt.scatter(X,Rate1pct,color="green")
-plt.scatter(X,Rate10pct,color="red")
-
+plt.plot(X,Rate1,color="blue")
+plt.plot(X,Rate1pct,color="green")
+plt.plot(X,Rate10pct,color="red")
 plt.show()
 
 X_np=np.array(X)
@@ -102,9 +101,9 @@ Y_np=np.array(Select_Value_aver)
 x_new = np.linspace(X_np.min(), X_np.max(),100)
 y_smooth = make_interp_spline(X_np, Y_np)(x_new)
  
-plt.scatter(X, Selet_Value_high,color="blue")
-plt.scatter(X, Select_Value_low,color="green")
-plt.scatter(X, Select_Value_aver,color="red")
+plt.plot(X, Selet_Value_high,color="blue")
+plt.plot(X, Select_Value_low,color="green")
+#plt.scatter(X, Select_Value_aver,color="red")
 plt.plot(x_new, y_smooth,color="yellow")
 plt.show()
 

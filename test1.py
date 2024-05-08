@@ -5,22 +5,6 @@ from datetime import time
 
 import numpy as np
 
-
-def judge(X, pos):
-    if X[pos] >= M1:
-        return 1
-    elif (X[pos] >= M2) & (X[pos] < M1):
-        return 2
-    elif (X[pos] >= M3) & (X[pos] < M2):
-        return 3
-    elif (X[pos] >= M4) & (X[pos] < M3):
-        return 4
-    elif (X[pos] > M5) & (X[pos] < M4):
-        return 5
-    elif X[pos] <= M5:
-        return 6
-
-
 n = 1000
 m = 0
 for k in range(n):
@@ -42,13 +26,6 @@ for k in range(n):
     M4 = X2[92]
     M3 = X2[184]
     M2 = X2[276]
-    Qm = []
-    Qm.append(M1)
-    Qm.append(M2)
-    Qm.append(M3)
-    Qm.append(M4)
-    Qm.append(M5)
-    # print(Qm)
     maxval=-4
     P = np.zeros((6, 6), dtype=float)
     for i in range(337):
