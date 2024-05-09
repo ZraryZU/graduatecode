@@ -18,10 +18,11 @@ Select_Value_low=[]
 Select_Value_aver=[]
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
-with open('algorithm1_mean_data.csv', mode='r', encoding='utf-8',newline='') as file:
+
+with open('algorithm2_exp_data.csv', mode='r', encoding='utf-8',newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
-        X.append(float(row['REPEAT_COUNT']))
+        X.append(float(row['OBSERVE_COST']))
         Rate1.append(float(row['Rate1']))
         Rate1pct.append(float(row['Rate1pct']))
         Rate10pct.append(float(row['Rate10pct']))
@@ -29,9 +30,6 @@ with open('algorithm1_mean_data.csv', mode='r', encoding='utf-8',newline='') as 
         Select_Value_low.append(float(row['Select_Value_low']))
         Select_Value_aver.append(float(row['Select_Value_aver']))
 file.close()
-
-
-
 
 plt.xlabel('观察对象数量')
 plt.ylabel('命中率')

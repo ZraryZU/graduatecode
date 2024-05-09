@@ -7,9 +7,10 @@ import numpy as np
 from tomlkit import string
 import matplotlib.pyplot as plt
 import math
-REPEAT_COUNT_LOW=50
-REPEAT_COUNT_HIGH=10000
-REPEAT_COUNT_STEP=50
+REPEAT_COUNT=1000
+REPEAT_COUNT_LOW=10
+REPEAT_COUNT_HIGH=2000
+REPEAT_COUNT_STEP=5
 X=[]
 Rate1=[]
 Rate1pct=[]
@@ -17,18 +18,18 @@ Rate10pct=[]
 Selet_Value_high=[]
 Select_Value_low=[]
 Select_Value_aver=[]
-for REPEAT_COUNT in range(REPEAT_COUNT_LOW,REPEAT_COUNT_HIGH,REPEAT_COUNT_STEP):
+for itemss in range(REPEAT_COUNT_LOW,REPEAT_COUNT_HIGH,REPEAT_COUNT_STEP):
     PERCENT1_COUNT=0
     PERCENT10_COUNT=0
     TARGET_COUNT=0
-    X.append(REPEAT_COUNT)
+    X.append(itemss)
     S_V_H = float('-inf')
     S_V_L = float('inf')
     S_V_A = 0
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 1000)+1000
+        itemss = int(random.random() * 1000)+10000
         for i in range(itemss):
             random_number = random.random()
             X1.append(random_number)
@@ -77,7 +78,7 @@ Data.append(Select_Value_low)
 Data.append(Select_Value_aver)
 Data=np.array(Data)
 Data=Data.T
-with open('algorithm1_mean_data.csv', mode='w', encoding='utf-8',newline='') as file:
+with open('algorithm1_mean_data2.csv', mode='w', encoding='utf-8',newline='') as file:
     writer = csv.writer(file)
     writer.writerow(header)
     for row in Data:

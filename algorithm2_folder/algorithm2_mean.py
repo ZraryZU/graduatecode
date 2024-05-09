@@ -16,7 +16,7 @@ Rate10pct=[]
 Selet_Value_high=[]
 Select_Value_low=[]
 Select_Value_aver=[]
-for c in range(1,7000,1000):
+for c in range(1,9999,10):
     c=c/10000
     PERCENT1_COUNT=0
     PERCENT10_COUNT=0
@@ -28,7 +28,7 @@ for c in range(1,7000,1000):
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 90)+10
+        itemss = int(random.random() * 1000)+1000
         for i in range(itemss):
             random_number = random.random()
             X1.append(random_number)
