@@ -7,9 +7,9 @@ import numpy as np
 from tomlkit import string
 import matplotlib.pyplot as plt
 import math
-REPEAT_COUNT_LOW=100
+REPEAT_COUNT_LOW=50
 REPEAT_COUNT_HIGH=10000
-REPEAT_COUNT_STEP=100
+REPEAT_COUNT_STEP=50
 X=[]
 Rate1=[]
 Rate1pct=[]
@@ -28,7 +28,7 @@ for REPEAT_COUNT in range(REPEAT_COUNT_LOW,REPEAT_COUNT_HIGH,REPEAT_COUNT_STEP):
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 900)+100
+        itemss = int(random.random() * 1000)+1000
         for i in range(itemss):
             random_number = random.random()
             X1.append(random_number)
