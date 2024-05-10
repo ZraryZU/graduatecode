@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import math
 c=0.1
 miu=1
-REPEAT_COUNT=100
+REPEAT_COUNT=1000
 RESULT_DIC=[]
 X=[]
 Rate1=[]
@@ -17,7 +17,7 @@ Rate10pct=[]
 Selet_Value_high=[]
 Select_Value_low=[]
 Select_Value_aver=[]
-for c in range(1,15000,10):
+for c in range(1,15000,100):
     c=c/10000
     PERCENT1_COUNT=0
     PERCENT10_COUNT=0
@@ -29,7 +29,7 @@ for c in range(1,15000,10):
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 90)+10
+        itemss = int(random.random() * 1000)+1000
         for i in range(itemss):
             random_number = np.random.exponential(scale=miu)
             X1.append(random_number)

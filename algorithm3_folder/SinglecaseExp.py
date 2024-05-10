@@ -12,7 +12,7 @@ from scipy.interpolate import make_interp_spline
 c=0.001
 p=0.5
 miu=1
-REPEAT_COUNT=50
+REPEAT_COUNT=1000
 TARGET_COUNT=0
 PERCENT1_COUNT=0
 PERCENT10_COUNT=0
@@ -24,7 +24,7 @@ Select_Value_low=[]
 Select_Value_aver=[]
 X=[]
 
-for c in range(1,7000,100):
+for c in range(1,7000,10):
     c = c / 10000
     X.append(c)
     #p=p/10000
@@ -38,7 +38,7 @@ for c in range(1,7000,100):
     for k in range(REPEAT_COUNT):
         X1 = []
         res = []
-        itemss = int(random.random() * 900)+100
+        itemss = int(random.random() * 1000)+1000
         xaxis = []
         re = 0
         B = []

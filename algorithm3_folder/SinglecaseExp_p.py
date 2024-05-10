@@ -12,7 +12,7 @@ from scipy.interpolate import make_interp_spline
 c=0.004
 p=0.1
 miu=1
-REPEAT_COUNT=50
+REPEAT_COUNT=1000
 TARGET_COUNT=0
 PERCENT1_COUNT=0
 PERCENT10_COUNT=0
@@ -38,7 +38,7 @@ for p in range(1,999,3):
     for k in range(REPEAT_COUNT):
         X1 = []
         res = []
-        itemss = int(random.random() * 900)+100
+        itemss = int(random.random() * 1000)+1000
         xaxis = []
         re = 0
         B = []

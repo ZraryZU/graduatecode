@@ -13,16 +13,16 @@ from mpl_toolkits.mplot3d import Axes3D
 c=0.001
 p=0.8
 miu=1
-REPEAT_COUNT=15
+REPEAT_COUNT=1000
 TARGET_COUNT=0
 PERCENT1_COUNT=0
 PERCENT10_COUNT=0
 P_LOW=1
 P_HIGH=10000
-P_STEP=200
+P_STEP=25
 C_LOW=1
 C_HIGH=10000
-C_STEP=200
+C_STEP=25
 Rate1=[]
 Rate1pct=[]
 Rate10pct=[]
@@ -50,7 +50,7 @@ for p in range(P_LOW,P_HIGH,P_STEP):
         for k in range(REPEAT_COUNT):
             X1 = []
             res = []
-            itemss = int(random.random() * 90)+10
+            itemss = int(random.random() * 1000)+1000
             xaxis = []
             re = 0
             B = []

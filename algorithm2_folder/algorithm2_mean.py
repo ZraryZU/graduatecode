@@ -7,7 +7,7 @@ from tomlkit import string
 import matplotlib.pyplot as plt
 import math
 c=0.1
-REPEAT_COUNT=100
+REPEAT_COUNT=1000
 RESULT_DIC=[]
 X=[]
 Rate1=[]
