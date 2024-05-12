@@ -23,10 +23,13 @@ Selet_Value_high=[]
 Select_Value_low=[]
 Select_Value_aver=[]
 X=[]
-cp=[[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],[0.0001,0.1],]
-for c in range(1,9999,10):
-    c = c / 10000
+P=[]
+cp=[[0.0001,0.1],[0.0001,0.5],[0.001,0.8],[0.004,0.1],[0.004,0.5],[0.004,0.8],[0.01,0.1],[0.3,0.5],[0.8,0.8]]
+for i in range(9):
+    c = cp[i][0]
+    p = cp[i][1]
     X.append(c)
+    P.append(p)
     #p=p/10000
     RESULT_DIC = []
     PERCENT1_COUNT = 0
@@ -94,8 +97,9 @@ for c in range(1,9999,10):
 
 #数据保存
 Data=[]
-header=['OBSERVE_COST','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
+header=['OBSERVE_COST','BERNOULLI','Rate1','Rate1pct','Rate10pct','Selet_Value_high','Select_Value_low','Select_Value_aver']
 Data.append(X)
+Data.append(P)
 Data.append(Rate1)
 Data.append(Rate1pct)
 Data.append(Rate10pct)
@@ -104,7 +108,7 @@ Data.append(Select_Value_low)
 Data.append(Select_Value_aver)
 Data=np.array(Data)
 Data=Data.T
-with open('P='+str(p)+'algorithm3_exp_data.csv', mode='w', encoding='utf-8',newline='') as file:
+with open('table_algorithm3_exp_data.csv', mode='w', encoding='utf-8',newline='') as file:
     writer = csv.writer(file)
     writer.writerow(header)
     for row in Data:

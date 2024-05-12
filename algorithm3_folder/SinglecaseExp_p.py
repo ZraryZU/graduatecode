@@ -24,7 +24,7 @@ Select_Value_low=[]
 Select_Value_aver=[]
 X=[]
 
-for p in range(1,999,3):
+for p in range(1,999,1):
     p = p / 1000
     X.append(p)
     #p=p/10000

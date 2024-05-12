@@ -19,19 +19,19 @@ Select_Value_aver=[]
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
-with open('algorithm2_exp_data.csv', mode='r', encoding='utf-8',newline='') as file:
+with open('Cost=0.004algorithm3_exp_data.csv', mode='r', encoding='utf-8',newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
-        X.append(float(row['OBSERVE_COST']))
+        X.append(float(row['BERNOULLI']))
         Rate1.append(float(row['Rate1']))
         Rate1pct.append(float(row['Rate1pct']))
         Rate10pct.append(float(row['Rate10pct']))
-        Select_Value_high.append(float(row['Selet_Value_high'])-float(row['OBSERVE_COST']))
-        Select_Value_low.append(float(row['Select_Value_low'])-float(row['OBSERVE_COST']))
-        Select_Value_aver.append(float(row['Select_Value_aver'])-float(row['OBSERVE_COST']))
+        Select_Value_high.append(float(row['Selet_Value_high']))
+        Select_Value_low.append(float(row['Select_Value_low']))
+        Select_Value_aver.append(float(row['Select_Value_aver']))
 file.close()
 
-plt.xlabel('单次观察成本')
+plt.xlabel('p值')
 plt.ylabel('命中率')
 
 plt.scatter(X,Rate1,color="blue",s=10,label='最大值命中率')
@@ -53,19 +53,22 @@ plt.plot(X_np, m*X_np + b, '-')
  # 绘制趋势线参数RATE1
 m, b = np.polyfit(X_np, Rate10pct, 1)
 plt.plot(X_np, m*X_np + b, '-')
-plt.savefig('exp命中率.png')
+plt.savefig('p-命中率.png')
 plt.show()
 
-
-plt.xlabel('单次观察成本')
-plt.ylabel('收益值')
+plt.xlabel('p值')
+plt.ylabel('选择奖励值')
 plt.plot(X, Select_Value_high,color="blue",label='选中值上界')
 plt.plot(X, Select_Value_low,color="green",label='选中值下界')
 plt.plot(X, Select_Value_aver,color="red",label='选中值均值')
 
 plt.legend(labels=['选中值上界','选中值下界','选中值均值'],loc='best')
-plt.savefig('exp命中值.png')
+plt.savefig('p-命中值.png')
 plt.show()
+
+
+
+
 
 
 
@@ -84,19 +87,19 @@ Select_Value_aver=[]
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
 
-with open('algorithm2_mean_data.csv', mode='r', encoding='utf-8',newline='') as file:
+with open('P=0.5algorithm3_exp_data.csv', mode='r', encoding='utf-8',newline='') as file:
     reader = csv.DictReader(file)
     for row in reader:
         X.append(float(row['OBSERVE_COST']))
         Rate1.append(float(row['Rate1']))
         Rate1pct.append(float(row['Rate1pct']))
         Rate10pct.append(float(row['Rate10pct']))
-        Select_Value_high.append(float(row['Selet_Value_high'])-float(row['OBSERVE_COST']))
-        Select_Value_low.append(float(row['Select_Value_low'])-float(row['OBSERVE_COST']))
-        Select_Value_aver.append(float(row['Select_Value_aver'])-float(row['OBSERVE_COST']))
+        Select_Value_high.append(float(row['Selet_Value_high']))
+        Select_Value_low.append(float(row['Select_Value_low']))
+        Select_Value_aver.append(float(row['Select_Value_aver']))
 file.close()
 
-plt.xlabel('单次观察成本')
+plt.xlabel('观察成本')
 plt.ylabel('命中率')
 
 plt.scatter(X,Rate1,color="blue",s=10,label='最大值命中率')
@@ -107,8 +110,8 @@ plt.legend(labels=['最大值命中率','前1%命中率','前10%值命中率'],l
 
 X_np=np.array(X)
 Y_np=np.array(Select_Value_aver)
-x_new = np.linspace(X_np.min(), X_np.max(),100)
-y_smooth = make_interp_spline(X_np, Y_np)(x_new)
+#x_new = np.linspace(X_np.min(), X_np.max(),100)
+#y_smooth = make_interp_spline(X_np, Y_np)(x_new)
  # 绘制趋势线参数RATE1
 m, b = np.polyfit(X_np, Rate1, 1)
 plt.plot(X_np, m*X_np + b, '-')
@@ -118,16 +121,16 @@ plt.plot(X_np, m*X_np + b, '-')
  # 绘制趋势线参数RATE1
 m, b = np.polyfit(X_np, Rate10pct, 1)
 plt.plot(X_np, m*X_np + b, '-')
-plt.savefig('mean命中率.png')
+
+plt.savefig('c-命中率.png')
 plt.show()
 
-
-plt.xlabel('单次观察成本')
-plt.ylabel('收益值')
+plt.xlabel('观察成本')
+plt.ylabel('选择奖励值')
 plt.plot(X, Select_Value_high,color="blue",label='选中值上界')
 plt.plot(X, Select_Value_low,color="green",label='选中值下界')
 plt.plot(X, Select_Value_aver,color="red",label='选中值均值')
 
 plt.legend(labels=['选中值上界','选中值下界','选中值均值'],loc='best')
-plt.savefig('mean命中值.png')
+plt.savefig('c-命中值.png')
 plt.show()

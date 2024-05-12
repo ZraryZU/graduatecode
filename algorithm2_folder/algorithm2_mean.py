@@ -28,11 +28,11 @@ for c in range(1,9999,10):
     for k in range(REPEAT_COUNT):
         X1=[]
         res = []
-        itemss = int(random.random() * 1000)+1000
+        itemss = int(random.random() * 1500)+500
         for i in range(itemss):
             random_number = random.random()
             X1.append(random_number)
-            res.append(X1[i]-i*c)
+            res.append(X1[i]-(i+1)*c)
         res.sort()
         Vtemp=0
         if (c<=0.5) :
